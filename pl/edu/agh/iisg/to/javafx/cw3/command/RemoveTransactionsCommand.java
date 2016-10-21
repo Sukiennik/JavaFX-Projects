@@ -1,43 +1,46 @@
 package pl.edu.agh.iisg.to.javafx.cw3.command;
 
-import javafx.scene.control.TableView;
+
+import java.util.List;
 import pl.edu.agh.iisg.to.javafx.cw3.model.Account;
 import pl.edu.agh.iisg.to.javafx.cw3.model.Transaction;
 
 public class RemoveTransactionsCommand implements Command {
 
-	private TableView<Transaction> transactionsTable;
-	private Transaction transactionToRemove;
+	private List<Transaction> transactionsToRemove;
 	private Account account;
 	
-	public RemoveTransactionsCommand(Transaction transactionToRemove, TableView<Transaction> transactionsTable, Account account) {
+	public RemoveTransactionsCommand(List<Transaction> transactionsToRemove, Account account) {
 		this.account = account;
-		this.transactionToRemove = transactionToRemove;
-		this.transactionsTable = transactionsTable;
+		this.transactionsToRemove = transactionsToRemove;
 	}
 	
 	@Override
 	public String getName() {
-		final int presentSize = transactionsTable.getSelectionModel().getSelectedItems().size();
-		return presentSize + "transaction/s removed";
+		return transactionsToRemove.size() + " transaction/s removed";
 	}
 	
 	@Override
 	public void undo() {
-		// TODO Auto-generated method stub
+		for (Transaction transaction : transactionsToRemove) {
+			account.addTransaction(transaction);
+		}
 
 	}
 
 	@Override
 	public void redo() {
-		// TODO Auto-generated method stub
+		for (Transaction transaction : transactionsToRemove) {
+			account.removeTransaction(transaction);
+		}
 
 	}
 
 	@Override
 	public void execute() {
-		account.removeTransaction(transactionToRemove);
-
+		for (Transaction transaction : transactionsToRemove) {
+			account.removeTransaction(transaction);
+		}
 	}
 
 }

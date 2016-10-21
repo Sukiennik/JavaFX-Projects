@@ -3,11 +3,15 @@ package pl.edu.agh.iisg.to.javafx.cw3.view;
 import java.math.BigDecimal;
 import java.text.DecimalFormat;
 import java.text.ParseException;
+import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
+import java.time.format.DateTimeParseException;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.control.Alert;
 import javafx.scene.control.TextField;
+import javafx.scene.control.Alert.AlertType;
 import javafx.stage.Stage;
 import javafx.util.converter.LocalDateStringConverter;
 import pl.edu.agh.iisg.to.javafx.cw3.model.Category;
@@ -71,9 +75,54 @@ public class TransactionEditDialogController {
 	}
 
 	private boolean isInputValid() {
-		// TODO: implement
+String errorMsg="";
+		
+		
+		if(dateTextField.getText() == null || dateTextField.getText().length() == 0) {
+			errorMsg+="Invalid date.\n";
+		}
+		else {
+			try {
+				final DateTimeFormatter DATE_FORMATTER = 
+			            DateTimeFormatter.ofPattern("yyyy-MM-dd");
+				DATE_FORMATTER.parse(dateTextField.getText(), LocalDate::from);
+			}
+			catch(DateTimeParseException e) {
+				errorMsg+="Invalid date. Use the yyyy-MM-dd format!\n";
+			}
+		}
+		if(payeeTextField.getText() == null || payeeTextField.getText().length() == 0) {
+			errorMsg+="Invalid payee value!\n";
+		}
+		if(categoryTextField.getText() == null || categoryTextField.getText().length() == 0) {
+			errorMsg+="Invalid category!\n";
+		}
+		if(inflowTextField.getText() == null || inflowTextField.getText().length() == 0) {
+			errorMsg+="Invalid inflow value!\n";
+		}
+		else {
+			try {
+				new BigDecimal(inflowTextField.getText());;
+			}
+			catch(NumberFormatException e)//ParseException e)
+			{
+				errorMsg+="Invalid inflow value! Must be BigDecimal";
+			}
+		}
+		
+		if(errorMsg.length() == 0) {
+			return true;			
+		}
+		else {
+			Alert alert = new Alert(AlertType.ERROR);
+			alert.initOwner(dialogStage);
+			alert.setTitle("Invalid fields");
+            alert.setHeaderText("Please correct invalid fields");
+            alert.setContentText(errorMsg);
 
-		return true;
+            alert.showAndWait();
+            return false;
+		}
 	}
 
 	private void updateModel() {

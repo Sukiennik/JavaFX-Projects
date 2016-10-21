@@ -2,6 +2,8 @@ package pl.edu.agh.iisg.to.javafx.cw3.view;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.List;
 
 import javafx.beans.binding.Bindings;
 import javafx.event.ActionEvent;
@@ -67,15 +69,15 @@ public class AccountOverviewController {
 
 	@FXML
 	private Button undoButton;
-
+	
 	@FXML
 	private Button redoButton;
-
+	
 	@FXML
 	private void initialize() {
 		transactionsTable.getSelectionModel().setSelectionMode(
 				SelectionMode.MULTIPLE);
-
+	
 		dateColumn.setCellValueFactory(dataValue -> dataValue.getValue()
 				.getDateProperty());
 		payeeColumn.setCellValueFactory(dataValue -> dataValue.getValue()
@@ -84,23 +86,18 @@ public class AccountOverviewController {
 				.getCategoryProperty());
 		inflowColumn.setCellValueFactory(dataValue -> dataValue.getValue()
 				.getInflowProperty());
-		deleteButton.disableProperty().bind(
-				Bindings.isEmpty(transactionsTable.getSelectionModel()
-						.getSelectedItems()));
-
-		editButton.disableProperty().bind(
-				Bindings.size(
-						transactionsTable.getSelectionModel()
-								.getSelectedItems()).isNotEqualTo(1));
+		deleteButton.disableProperty().bind(Bindings.isEmpty(transactionsTable.getSelectionModel().getSelectedItems()));	
+		editButton.disableProperty().bind(Bindings.size(transactionsTable.getSelectionModel().getSelectedItems()).isNotEqualTo(1));
+		
+		//undoButton.disableProperty().bind(Bindings.isEmpty(commandRegistry.getCommandStack()));
+		//redoButton.disableProperty().bind(Bindings.isEmpty(commandRegistry.getUndoCommandStack()));
 	}
 
 	@FXML
-	private void handleDeleteAction(ActionEvent event) {
-		for (Transaction transaction : transactionsTable.getSelectionModel().getSelectedItems()) {
-			//data.removeTransaction(transaction);
-			RemoveTransactionsCommand removeTransactionsCommand = new RemoveTransactionsCommand(transaction, transactionsTable, data);
-			commandRegistry.executeCommand(removeTransactionsCommand);
-		}
+	private void handleDeleteAction(ActionEvent event) {	
+		List<Transaction> selectedTransactions = new ArrayList<>(transactionsTable.getSelectionModel().getSelectedItems());
+		RemoveTransactionsCommand removeTransactionsCommand = new RemoveTransactionsCommand(selectedTransactions, data);
+		commandRegistry.executeCommand(removeTransactionsCommand);
 
 	}
 

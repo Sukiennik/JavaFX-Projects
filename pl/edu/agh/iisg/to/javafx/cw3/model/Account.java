@@ -1,8 +1,6 @@
 package pl.edu.agh.iisg.to.javafx.cw3.model;
 
 import java.math.BigDecimal;
-import java.util.List;
-
 import javafx.beans.property.ObjectProperty;
 import javafx.beans.property.SimpleObjectProperty;
 import javafx.beans.property.SimpleStringProperty;

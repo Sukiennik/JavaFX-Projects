@@ -1,4 +1,4 @@
-package pl.edu.agh.iisg.to.javafx.cw3.presenter;
+package pl.edu.agh.iisg.to.javafx.lab2_cw3.presenter;
 
 import java.io.IOException;
 
@@ -7,25 +7,26 @@ import javafx.scene.Scene;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
-import pl.edu.agh.iisg.to.javafx.cw3.Main;
-import pl.edu.agh.iisg.to.javafx.cw3.command.CommandRegistry;
-import pl.edu.agh.iisg.to.javafx.cw3.model.Transaction;
-import pl.edu.agh.iisg.to.javafx.cw3.model.generator.DataGenerator;
-import pl.edu.agh.iisg.to.javafx.cw3.view.AccountOverviewController;
-import pl.edu.agh.iisg.to.javafx.cw3.view.TransactionEditDialogController;
+import pl.edu.agh.iisg.to.javafx.lab2_cw3.Main;
+import pl.edu.agh.iisg.to.javafx.lab2_cw3.command.CommandRegistry;
+import pl.edu.agh.iisg.to.javafx.lab2_cw3.model.Transaction;
+import pl.edu.agh.iisg.to.javafx.lab2_cw3.model.generator.DataGenerator;
+import pl.edu.agh.iisg.to.javafx.lab2_cw3.view.AccountOverviewController;
+import pl.edu.agh.iisg.to.javafx.lab2_cw3.view.TransactionEditDialogController;
 
 public class AccountPresenter {
 
 	private Stage primaryStage;
 
 	private CommandRegistry commandRegistry = new CommandRegistry();
-
+	
 	public AccountPresenter(Stage primaryStage) {
 		this.primaryStage = primaryStage;
 	}
 
 	public void initRootLayout() {
 		try {
+			
 			this.primaryStage.setTitle("My second JavaFX app");
 
 			// load layout from FXML file

@@ -1,4 +1,4 @@
-package pl.edu.agh.iisg.to.javafx.cw3.view;
+package pl.edu.agh.iisg.to.javafx.lab2_cw3.view;
 
 import java.math.BigDecimal;
 import java.text.DecimalFormat;
@@ -10,12 +10,12 @@ import java.time.format.DateTimeParseException;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
-import javafx.scene.control.TextField;
 import javafx.scene.control.Alert.AlertType;
+import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import javafx.util.converter.LocalDateStringConverter;
-import pl.edu.agh.iisg.to.javafx.cw3.model.Category;
-import pl.edu.agh.iisg.to.javafx.cw3.model.Transaction;
+import pl.edu.agh.iisg.to.javafx.lab2_cw3.model.Category;
+import pl.edu.agh.iisg.to.javafx.lab2_cw3.model.Transaction;
 
 public class TransactionEditDialogController {
 

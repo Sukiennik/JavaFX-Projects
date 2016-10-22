@@ -1,4 +1,4 @@
-package pl.edu.agh.iisg.to.javafx.cw3.command;
+package pl.edu.agh.iisg.to.javafx.lab2_cw3.command;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -11,12 +11,15 @@ public class CommandRegistry {
 	private ObservableList<Command> undoCommandStack = FXCollections
 			.observableArrayList();
 
+	
+	public CommandRegistry() {}
+	
 	public void executeCommand(Command command) {
 		command.execute();
 		commandStack.add(command);
 		undoCommandStack.clear();
 	}
-
+	
 	public void redo() {
 		if(undoCommandStack.isEmpty()) return;
 		

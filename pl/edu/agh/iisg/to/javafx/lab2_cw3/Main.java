@@ -1,8 +1,8 @@
-package pl.edu.agh.iisg.to.javafx.cw3;
+package pl.edu.agh.iisg.to.javafx.lab2_cw3;
 
 import javafx.application.Application;
 import javafx.stage.Stage;
-import pl.edu.agh.iisg.to.javafx.cw3.presenter.AccountPresenter;
+import pl.edu.agh.iisg.to.javafx.lab2_cw3.presenter.AccountPresenter;
 
 public class Main extends Application {
 

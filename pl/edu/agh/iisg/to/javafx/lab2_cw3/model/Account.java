@@ -1,4 +1,4 @@
-package pl.edu.agh.iisg.to.javafx.cw3.model;
+package pl.edu.agh.iisg.to.javafx.lab2_cw3.model;
 
 import java.math.BigDecimal;
 import javafx.beans.property.ObjectProperty;

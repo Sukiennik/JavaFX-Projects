@@ -1,4 +1,4 @@
-package pl.edu.agh.iisg.to.javafx.cw3.model;
+package pl.edu.agh.iisg.to.javafx.lab2_cw3.model;
 
 public class Category {
 	private String name;

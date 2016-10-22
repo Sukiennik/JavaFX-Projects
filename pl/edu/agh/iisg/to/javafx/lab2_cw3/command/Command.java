@@ -1,4 +1,4 @@
-package pl.edu.agh.iisg.to.javafx.cw3.command;
+package pl.edu.agh.iisg.to.javafx.lab2_cw3.command;
 
 public interface Command {
 

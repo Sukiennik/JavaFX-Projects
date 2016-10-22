@@ -6,7 +6,7 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.layout.BorderPane?>
 
-<BorderPane prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8.0.40" xmlns:fx="http://javafx.com/fxml/1" fx:controller="pl.edu.agh.iisg.to.javafx.cw3.view.AccountOverviewController">
+<BorderPane prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8.0.40" xmlns:fx="http://javafx.com/fxml/1" fx:controller="pl.edu.agh.iisg.to.javafx.lab2_cw3.view.AccountOverviewController">
 	<center>
 		<TableView fx:id="transactionsTable" prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
 			<columns>

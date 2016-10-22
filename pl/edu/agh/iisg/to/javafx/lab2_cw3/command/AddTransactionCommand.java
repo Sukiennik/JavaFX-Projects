@@ -1,7 +1,7 @@
-package pl.edu.agh.iisg.to.javafx.cw3.command;
+package pl.edu.agh.iisg.to.javafx.lab2_cw3.command;
 
-import pl.edu.agh.iisg.to.javafx.cw3.model.Account;
-import pl.edu.agh.iisg.to.javafx.cw3.model.Transaction;
+import pl.edu.agh.iisg.to.javafx.lab2_cw3.model.Account;
+import pl.edu.agh.iisg.to.javafx.lab2_cw3.model.Transaction;
 
 public class AddTransactionCommand implements Command {
 

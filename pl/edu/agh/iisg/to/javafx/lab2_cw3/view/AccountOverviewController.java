@@ -1,4 +1,4 @@
-package pl.edu.agh.iisg.to.javafx.cw3.view;
+package pl.edu.agh.iisg.to.javafx.lab2_cw3.view;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;
@@ -14,14 +14,14 @@ import javafx.scene.control.ListView;
 import javafx.scene.control.SelectionMode;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
-import pl.edu.agh.iisg.to.javafx.cw3.command.AddTransactionCommand;
-import pl.edu.agh.iisg.to.javafx.cw3.command.Command;
-import pl.edu.agh.iisg.to.javafx.cw3.command.CommandRegistry;
-import pl.edu.agh.iisg.to.javafx.cw3.command.RemoveTransactionsCommand;
-import pl.edu.agh.iisg.to.javafx.cw3.model.Account;
-import pl.edu.agh.iisg.to.javafx.cw3.model.Category;
-import pl.edu.agh.iisg.to.javafx.cw3.model.Transaction;
-import pl.edu.agh.iisg.to.javafx.cw3.presenter.AccountPresenter;
+import pl.edu.agh.iisg.to.javafx.lab2_cw3.command.AddTransactionCommand;
+import pl.edu.agh.iisg.to.javafx.lab2_cw3.command.Command;
+import pl.edu.agh.iisg.to.javafx.lab2_cw3.command.CommandRegistry;
+import pl.edu.agh.iisg.to.javafx.lab2_cw3.command.RemoveTransactionsCommand;
+import pl.edu.agh.iisg.to.javafx.lab2_cw3.model.Account;
+import pl.edu.agh.iisg.to.javafx.lab2_cw3.model.Category;
+import pl.edu.agh.iisg.to.javafx.lab2_cw3.model.Transaction;
+import pl.edu.agh.iisg.to.javafx.lab2_cw3.presenter.AccountPresenter;
 
 public class AccountOverviewController {
 
@@ -88,9 +88,6 @@ public class AccountOverviewController {
 				.getInflowProperty());
 		deleteButton.disableProperty().bind(Bindings.isEmpty(transactionsTable.getSelectionModel().getSelectedItems()));	
 		editButton.disableProperty().bind(Bindings.size(transactionsTable.getSelectionModel().getSelectedItems()).isNotEqualTo(1));
-		
-		//undoButton.disableProperty().bind(Bindings.isEmpty(commandRegistry.getCommandStack()));
-		//redoButton.disableProperty().bind(Bindings.isEmpty(commandRegistry.getUndoCommandStack()));
 	}
 
 	@FXML
@@ -142,6 +139,10 @@ public class AccountOverviewController {
 
 	public void setCommandRegistry(CommandRegistry commandRegistry) {
 		this.commandRegistry = commandRegistry;
+		
+		undoButton.disableProperty().bind(Bindings.isEmpty(commandRegistry.getCommandStack()));
+		redoButton.disableProperty().bind(Bindings.isEmpty(commandRegistry.getUndoCommandStack()));
+		
 		commandLogView.setItems(commandRegistry.getCommandStack());
 		commandLogView.setCellFactory(lv -> new ListCell<Command>() {
 			protected void updateItem(Command item, boolean empty) {

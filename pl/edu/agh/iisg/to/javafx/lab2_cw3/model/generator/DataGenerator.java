@@ -1,11 +1,11 @@
-package pl.edu.agh.iisg.to.javafx.cw3.model.generator;
+package pl.edu.agh.iisg.to.javafx.lab2_cw3.model.generator;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;
 
-import pl.edu.agh.iisg.to.javafx.cw3.model.Account;
-import pl.edu.agh.iisg.to.javafx.cw3.model.Category;
-import pl.edu.agh.iisg.to.javafx.cw3.model.Transaction;
+import pl.edu.agh.iisg.to.javafx.lab2_cw3.model.Account;
+import pl.edu.agh.iisg.to.javafx.lab2_cw3.model.Category;
+import pl.edu.agh.iisg.to.javafx.lab2_cw3.model.Transaction;
 
 public class DataGenerator {
 
